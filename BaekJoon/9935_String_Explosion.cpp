@@ -12,8 +12,116 @@ using namespace std;
 // 폭발 문자열은 같은 문자를 두 개 이상 포함하지 않는다.
 // 두 문자열은 모두 알파벳 소문자와 대문자, 숫자 0, 1, ..., 9로만 이루어져 있다.
 
-// temp_stack 과 explo_stack 출력 순서는 상관 없어
-// 스택에 대한 역할을 다시 만들 필요가 있어.
+
+int explo_size;
+
+string s; // 1 <= s.size() <= 1,000,000
+string explosive; // 1<= explosive <= 36
+string result; // 못터트린 나머지 문자열 출력 변수
+
+stack<char> s_stack; // 터트릴 문자열 스택
+stack<char> temp_stack; // 임시 저장소 스택
+stack<char> explo_stack; // 폭발 문자열 스택
+
+
+int main() {
+    cin >> s >> explosive;
+
+    /*for (char c: s) {
+        s_stack.push(c);
+    }*/
+
+    explo_size = explosive.size();
+
+
+    int explo_pos = 0;
+
+    // temp_stack 만 쓰는 방식으로
+    while (true) {
+        bool explosion = false;
+
+        for (int i = 0; i < s.size(); i++) { // 검사문
+            temp_stack.push(s[i]);
+            printf("검사: %c - %c, ", temp_stack.top(), explosive[explo_pos]);
+
+            if (s[i] == explosive[explo_pos]) { // 현 폭발 문자열의 값과 같다면?
+                printf("equal ");
+                if (explo_pos == explosive.size() - 1) { // 끝까지 검사했다면?
+                    string s2;
+                    for (int j = 0; j < explosive.size(); j++) { // 폭발 문자열 만큼 pop
+                        s2 += temp_stack.top();
+                        temp_stack.pop();
+                    }
+                    reverse(s2.begin(), s2.end());
+                    stack<char>print_s_stack = temp_stack;
+                    string print_s;
+                    while (!print_s_stack.empty()) {
+                        print_s += print_s_stack.top();
+                        print_s_stack.pop();
+                    }
+                    reverse(print_s.begin(), print_s.end());
+                    cout << "to end, **explosion**: " << s2 << ", 중간 출력: " << print_s << endl;
+
+                    explosion = true, explo_pos = 0; // explosive! & 초기화
+                }
+
+                else { // 중간 검사면?
+                    explo_pos++; // 인덱스 증가로 다음 값 검사
+                    printf("to middle, explo_pos++: %d\n", explo_pos);
+                }
+            }
+            else if (s[i] == explosive[0]) { // 다른데 explosive 처음과 같다면?
+                printf("연장\n");
+                explo_pos = 1; // 연장해서 explosive[1] 부터 검사 시작 -> 무조건 1 부터가 아닌,
+            }
+            else { // 완잔히 끊긴 수준이면?
+                printf("끊김\n");
+                explo_pos = 0;
+            }
+        }
+
+        stack<char>print_s_stack = temp_stack;
+        string print_s;
+        while (!print_s_stack.empty()) {
+            print_s += print_s_stack.top();
+            print_s_stack.pop();
+        }
+        reverse(print_s.begin(), print_s.end());
+        cout << "temp_stack: " << print_s << endl;
+
+        if (!explosion) break; // 터지지 않았으면 break, 터졌으면 continue
+
+        printf("explosion 확인됨!\n-----------------\n");
+        s = print_s; // 검사할 문자열 초기화
+        explo_pos = 0;
+        while (!temp_stack.empty()) temp_stack.pop();
+    }
+
+    if (!temp_stack.empty()) {
+        stack<char>print_s_stack = temp_stack;
+        string print_s;
+        while (!print_s_stack.empty()) {
+            print_s += print_s_stack.top();
+            print_s_stack.pop();
+        }
+        reverse(print_s.begin(), print_s.end());
+        cout << print_s << endl;
+    }
+    else {
+        cout << "FRULA" << '\n';
+    }
+
+    return 0;
+}
+
+
+/*
+ *
+//이전 코드
+#include <algorithm>
+#include <iostream>
+#include <stack>
+using namespace std;
 
 int explo_size;
 
@@ -131,3 +239,5 @@ int main() {
 
     return 0;
 }
+
+*/
