@@ -3,52 +3,98 @@
 #include <stack>
 using namespace std;
 
-// https://www.acmicpc.net/problem/9935 , String Explosive!
+stack<char> string_stack; // ë¬¸ìì—´ í•˜ë‚˜ ì”© ë‹´ì„ ìŠ¤íƒ
+string s; // í­ë°œì‹œí‚¬ ë¬¸ìì—´
+string explo_s; // í­ë°œ ë¬¸ìì—´
 
-// ¹®ÀÚ¿­ÀÌ Æø¹ß ¹®ÀÚ¿­À» Æ÷ÇÔÇÏ°í ÀÖ´Â °æ¿ì¿¡, ¸ğµç Æø¹ß ¹®ÀÚ¿­ÀÌ Æø¹ßÇÏ°Ô µÈ´Ù. ³²Àº ¹®ÀÚ¿­À» ¼ø¼­´ë·Î ÀÌ¾î ºÙ¿© »õ·Î¿î ¹®ÀÚ¿­À» ¸¸µç´Ù.
-// »õ·Î »ı±ä ¹®ÀÚ¿­¿¡ Æø¹ß ¹®ÀÚ¿­ÀÌ Æ÷ÇÔµÇ¾î ÀÖÀ» ¼öµµ ÀÖ´Ù.
-// Æø¹ßÀº Æø¹ß ¹®ÀÚ¿­ÀÌ ¹®ÀÚ¿­¿¡ ¾øÀ» ¶§±îÁö °è¼ÓµÈ´Ù.
-// ¸ğµç Æø¹ßÀÌ ³¡³­ ÈÄ¿¡ ¾î¶² ¹®ÀÚ¿­ÀÌ ³²´ÂÁö ±¸ÇØº»´Ù. ³²¾ÆÀÖ´Â ¹®ÀÚ°¡ ¾ø´Â °æ¿ì´Â "FRULA"¸¦ Ãâ·ÂÇÑ´Ù.
-// Æø¹ß ¹®ÀÚ¿­Àº °°Àº ¹®ÀÚ¸¦ µÎ °³ ÀÌ»ó Æ÷ÇÔÇÏÁö ¾Ê´Â´Ù.
-// µÎ ¹®ÀÚ¿­Àº ¸ğµÎ ¾ËÆÄºª ¼Ò¹®ÀÚ¿Í ´ë¹®ÀÚ, ¼ıÀÚ 0, 1, ..., 9·Î¸¸ ÀÌ·ç¾îÁ® ÀÖ´Ù.
+// https://www.acmicpc.net/problem/9935  , String Explosive!
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL),cout.tie(NULL);
+
+    cin >> s >> explo_s;
+
+    char last = explo_s[explo_s.size()-1]; // ë§ˆì§€ë§‰ ë¬¸ìì—´ ê¸°ì¤€ìœ¼ë¡œ ê²€ì‚¬
+
+    for (char c : s) {
+        string_stack.push(c);
+
+        if (c == last && string_stack.size() >= explo_s.size()) { // ê²€ì‚¬ ê¸°ì¤€ì´ë©°, ìŠ¤íƒ í¬ê¸°ê°€ ì¶©ë¶„íˆ í¬ë‹¤ë©´
+            string temp;
+            for (int i = 0; i<explo_s.size(); i++) { // í­ë°œ ë¬¸ìì—´ í¬ê¸° ë§Œí¼ ìŠ¤íƒì—ì„œ ë¹¼ê¸°
+                temp+=string_stack.top();
+                string_stack.pop();
+            }
+            reverse(temp.begin(), temp.end());
+            if (temp.compare(explo_s)) { // 1-> ë‹¤ë¦„, 0 -> ê°™ìŒ!
+                for (int i=0; i<temp.size(); i++) { // ë‹¤ì‹œ ë„£ê¸°
+                    string_stack.push(temp[i]);
+                }
+            }
+        }
+    }
+
+    string result;
+    while (!string_stack.empty()) {
+        result.push_back(string_stack.top());
+        string_stack.pop();
+    }
+    reverse(result.begin(), result.end());
+
+    if (!result.empty()) {
+        cout << result << '\n';
+    }
+    else {
+        cout << "FRULA" << '\n';
+    }
+    return 0;
+}
+
+
+// ì´ì „ ì‹œê°„ì´ˆê³¼ ì½”ë“œ
+/*
+
+#include <algorithm>
+#include <iostream>
+#include <stack>
+using namespace std;
+
+// https://www.acmicpc.net/problem/9935 , String Explosive!
 
 
 int explo_size;
 
 string s; // 1 <= s.size() <= 1,000,000
 string explosive; // 1<= explosive <= 36
-string result; // ¸øÅÍÆ®¸° ³ª¸ÓÁö ¹®ÀÚ¿­ Ãâ·Â º¯¼ö
+string result; // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 
-stack<char> s_stack; // ÅÍÆ®¸± ¹®ÀÚ¿­ ½ºÅÃ
-stack<char> temp_stack; // ÀÓ½Ã ÀúÀå¼Ò ½ºÅÃ
-stack<char> explo_stack; // Æø¹ß ¹®ÀÚ¿­ ½ºÅÃ
+stack<char> s_stack; // ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½
+stack<char> temp_stack; // ï¿½Ó½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+stack<char> explo_stack; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½
 
 
 int main() {
     cin >> s >> explosive;
-
-    /*for (char c: s) {
-        s_stack.push(c);
-    }*/
 
     explo_size = explosive.size();
 
 
     int explo_pos = 0;
 
-    // temp_stack ¸¸ ¾²´Â ¹æ½ÄÀ¸·Î
+    // temp_stack ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     while (true) {
         bool explosion = false;
 
-        for (int i = 0; i < s.size(); i++) { // °Ë»ç¹®
+        for (int i = 0; i < s.size(); i++) { // ï¿½Ë»ç¹®
             temp_stack.push(s[i]);
-            printf("°Ë»ç: %c - %c, ", temp_stack.top(), explosive[explo_pos]);
+            printf("ï¿½Ë»ï¿½: %c - %c, ", temp_stack.top(), explosive[explo_pos]);
 
-            if (s[i] == explosive[explo_pos]) { // Çö Æø¹ß ¹®ÀÚ¿­ÀÇ °ª°ú °°´Ù¸é?
+            if (s[i] == explosive[explo_pos]) { // ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½?
                 printf("equal ");
-                if (explo_pos == explosive.size() - 1) { // ³¡±îÁö °Ë»çÇß´Ù¸é?
+                if (explo_pos == explosive.size() - 1) { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½ß´Ù¸ï¿½?
                     string s2;
-                    for (int j = 0; j < explosive.size(); j++) { // Æø¹ß ¹®ÀÚ¿­ ¸¸Å­ pop
+                    for (int j = 0; j < explosive.size(); j++) { // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½Å­ pop
                         s2 += temp_stack.top();
                         temp_stack.pop();
                     }
@@ -60,22 +106,22 @@ int main() {
                         print_s_stack.pop();
                     }
                     reverse(print_s.begin(), print_s.end());
-                    cout << "to end, **explosion**: " << s2 << ", Áß°£ Ãâ·Â: " << print_s << endl;
+                    cout << "to end, **explosion**: " << s2 << ", ï¿½ß°ï¿½ ï¿½ï¿½ï¿½: " << print_s << endl;
 
-                    explosion = true, explo_pos = 0; // explosive! & ÃÊ±âÈ­
+                    explosion = true, explo_pos = 0; // explosive! & ï¿½Ê±ï¿½È­
                 }
 
-                else { // Áß°£ °Ë»ç¸é?
-                    explo_pos++; // ÀÎµ¦½º Áõ°¡·Î ´ÙÀ½ °ª °Ë»ç
+                else { // ï¿½ß°ï¿½ ï¿½Ë»ï¿½ï¿½?
+                    explo_pos++; // ï¿½Îµï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ë»ï¿½
                     printf("to middle, explo_pos++: %d\n", explo_pos);
                 }
             }
-            else if (s[i] == explosive[0]) { // ´Ù¸¥µ¥ explosive Ã³À½°ú °°´Ù¸é?
-                printf("¿¬Àå\n");
-                explo_pos = 1; // ¿¬ÀåÇØ¼­ explosive[1] ºÎÅÍ °Ë»ç ½ÃÀÛ -> ¹«Á¶°Ç 1 ºÎÅÍ°¡ ¾Æ´Ñ,
+            else if (s[i] == explosive[0]) { // ï¿½Ù¸ï¿½ï¿½ï¿½ explosive Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½?
+                printf("ï¿½ï¿½ï¿½ï¿½\n");
+                explo_pos = 1; // ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ explosive[1] ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ ï¿½ï¿½ï¿½ï¿½ -> ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1 ï¿½ï¿½ï¿½Í°ï¿½ ï¿½Æ´ï¿½,
             }
-            else { // ¿ÏÀÜÈ÷ ²÷±ä ¼öÁØÀÌ¸é?
-                printf("²÷±è\n");
+            else { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½?
+                printf("ï¿½ï¿½ï¿½ï¿½\n");
                 explo_pos = 0;
             }
         }
@@ -89,10 +135,10 @@ int main() {
         reverse(print_s.begin(), print_s.end());
         cout << "temp_stack: " << print_s << endl;
 
-        if (!explosion) break; // ÅÍÁöÁö ¾Ê¾ÒÀ¸¸é break, ÅÍÁ³À¸¸é continue
+        if (!explosion) break; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ break, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ continue
 
-        printf("explosion È®ÀÎµÊ!\n-----------------\n");
-        s = print_s; // °Ë»çÇÒ ¹®ÀÚ¿­ ÃÊ±âÈ­
+        printf("explosion È®ï¿½Îµï¿½!\n-----------------\n");
+        s = print_s; // ï¿½Ë»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½Ê±ï¿½È­
         explo_pos = 0;
         while (!temp_stack.empty()) temp_stack.pop();
     }
@@ -110,132 +156,6 @@ int main() {
     else {
         cout << "FRULA" << '\n';
     }
-
-    return 0;
-}
-
-
-/*
- *
-//ÀÌÀü ÄÚµå
-#include <algorithm>
-#include <iostream>
-#include <stack>
-using namespace std;
-
-int explo_size;
-
-string s; // 1 <= s.size() <= 1,000,000
-string explosive; // 1<= explosive <= 36
-string result; // ¸øÅÍÆ®¸° ³ª¸ÓÁö ¹®ÀÚ¿­ Ãâ·Â º¯¼ö
-
-stack<char> s_stack; // ÅÍÆ®¸± ¹®ÀÚ¿­ ½ºÅÃ
-stack<char> temp_stack; // ÀÓ½Ã ÀúÀå¼Ò ½ºÅÃ
-stack<char> explo_stack; // Æø¹ß ¹®ÀÚ¿­ ½ºÅÃ
-
-void print_stack() {
-    stack<char> print_s_stack = s_stack, print_temp_stack = temp_stack, print_explo_stack = explo_stack;
-    string print_s, print_temp, print_explo;
-
-    while (!print_s_stack.empty()) {
-        print_s += print_s_stack.top();
-        print_s_stack.pop();
-    }
-    print_s.reserve();
-
-    while (!print_temp_stack.empty()) {
-        print_temp += print_temp_stack.top();
-        print_temp_stack.pop();
-    }
-
-    while (!print_explo_stack.empty()) {
-        print_explo += print_explo_stack.top();
-        print_explo_stack.pop();
-    }
-
-    cout << "s_stack: " << print_s << "\ttemp_stack: " << print_temp << "\texplo_stack: " << print_explo << endl;
-}
-
-void explosive_check() {
-    if (!explo_size) {
-        // Æø¹ß ¹®ÀÚ¿­ ¸¸³ª¼­ ´Ù ÅÍÆ®¸° °æ¿ì
-        printf("explosive! \n");
-        while (!temp_stack.empty()) {
-            s_stack.push(temp_stack.top()); // ´ëÇÇ ½ºÅÃ¿¡ ÀÖ´ø °Å ´Ù½Ã ¿Å±â±â.
-            temp_stack.pop();
-        }
-        print_stack();
-        explo_size = explosive.size(); // ¿ø»óÅÂ·Î º¹±¸
-        while (!explo_stack.empty()) {
-            explo_stack.pop();
-        }
-    }
-}
-
-int main() {
-    cin >> s >> explosive;
-
-    for (char c : s) {
-        s_stack.push(c);
-    }
-
-    explo_size = explosive.size();
-
-    while (true) {
-        if (s_stack.empty()) {
-            printf("===·ÎÁ÷ Á¾·á===\n");
-            explosive_check();
-            break;
-        }
-
-        if (s_stack.top() == explosive[explo_size - 1]) { // ºñ±³ ÈÄ ¸¸³­ °æ¿ì
-            printf("Ã£À½, %c == %c, pop!\n", s_stack.top(), explosive[--explo_size]);
-            explo_stack.push(s_stack.top());
-            s_stack.pop();
-        }
-        else { // ºñ±³Çß´Âµ¥ ¾Æ´Ñ °æ¿ì
-            printf("¸øÃ£À½, %c != %c, to temp_stack\n", s_stack.top(), explosive[explo_size]);
-            temp_stack.push(s_stack.top());
-            s_stack.pop();
-        }
-
-        explosive_check();
-        print_stack();
-        printf("---------------\n");
-    }
-
-    printf("ÇÁ·Î±×·¥ Á¾·á\ns_stack.size: %d, temp_stack.size: %d, explo_size: %d, explo_stack.size: %d\n", s_stack.emplace(), temp_stack.size(), explo_size, explo_stack.size());
-
-    if (temp_stack.size() == 0) {
-        if (explo_stack.empty()) {
-            printf("FRULA\n");
-        }
-        else {
-            while (!temp_stack.empty()) {
-                result += temp_stack.top();
-                temp_stack.pop();
-            }
-            cout << "1, " << result << endl;
-        }
-    }
-    else { // ³²Àº °æ¿ì ÀÌ¹Ç·Î ³²Àº ¹®ÀÚ¿­ Ãâ·Â
-        while (!temp_stack.empty()) {
-            result += temp_stack.top();
-            temp_stack.pop();
-        }
-        cout << "2, " << result << endl;
-
-        string expl;
-        while (!explo_stack.empty()) {
-            expl += explo_stack.top();
-            explo_stack.pop();
-        }
-        cout << "2, " << expl << endl;
-    }
-
-
-    // FRULA = (s_stack, temp_stack) = 0, explo_size = explosive_string (ÃÊ±âÈ­ ½ÃÄÑ¹ö¸²)
-    // explo_stack ÀÌ Á¸Àç = ¹®ÀÚ¿­ ¹ÌÆø¹ß
 
     return 0;
 }
