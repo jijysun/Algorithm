@@ -5,7 +5,9 @@
 ## 문제 풀이 사이트
 
 - [Boj.kr](http://boj.kr/) ([solved.ac](http://solved.ac/))
-- Programmers CodingTest (https://school.programmers.co.kr/learn/challenges?order=recent&languages=cpp&page=1)
+    - 문제 랜덤: 실버2 ~ 골드1 에서 랜덤 후 첫 번째 문제
+    - 난이도는 블라인드 처리, 한국어 문제만 풀이
+- Programmers CodingTest (https://school.programmers.co.\kr/learn/challenges?order=recent&languages=cpp&page=1)
 
 ## 문제 풀이 방식
 
