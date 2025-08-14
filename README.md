@@ -15,7 +15,7 @@
   
 <br>
 
-문제 유형 (주 출제 유형)
+문제 유형 ([주 출제 유형](https://solved.ac/problems?levelStart=10&levelEnd=15&tags=graphs%2Cdata_structures%2Cbruteforcing%2Ctrees%2Cbfs%2Cgraph_traversal%2Csorting%2Csegtree%2Cdfs%2Cbacktracking&t=1755169345168))
 
 - 그래프 이론, 그래프 탐색, 트리, 세그먼트 트리, 깊이 우선 탐색, 너비 우선 탐색
 - 지료 구조, 브루트포스, 정렬, 백트래킹, 
