@@ -10,15 +10,15 @@
 ## 문제 풀이 사이트
 
 - [Boj.kr](http://boj.kr/) ([solved.ac](http://solved.ac/))
-    - 실버1 ~ 골드1 에서 랜덤, 난이도는 블라인드 처리, 한국어 문제만 풀이
+    - 실버3 ~ 골드1 에서 랜덤, 난이도는 블라인드 처리, 한국어 문제만 풀이
 - Programmers CodingTest ([프로그래머스](https://school.programmers.co.\kr/learn/challenges?order=recent&languages=cpp&page=1))
   
 <br>
 
-문제 유형 ([주 출제 유형](https://solved.ac/problems?levelStart=10&levelEnd=15&tags=graphs%2Cdata_structures%2Cbruteforcing%2Ctrees%2Cbfs%2Cgraph_traversal%2Csorting%2Csegtree%2Cdfs%2Cbacktracking&t=1755169345168))
+문제 유형 ([주 출제 유형 solved.ac 링크](https://solved.ac/problems?levelStart=10&levelEnd=15&tags=graphs%2Cdata_structures%2Cbruteforcing%2Ctrees%2Cbfs%2Cgraph_traversal%2Csorting%2Csegtree%2Cdfs%2Cbacktracking&t=1755169345168))
 
 - 그래프 이론, 그래프 탐색, 트리, 세그먼트 트리, 깊이 우선 탐색, 너비 우선 탐색
-- 지료 구조, 브루트포스, 정렬, 백트래킹, 
+- 지료 구조, 브루트포스, 정렬, 백트래킹 등등...
 
 <br>
 
