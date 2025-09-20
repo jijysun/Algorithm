@@ -10,24 +10,23 @@
 ## 문제 풀이 사이트
 
 - [Boj.kr](http://boj.kr/) ([solved.ac](http://solved.ac/))
-    - 실버3 ~ 골드1 에서 랜덤, 난이도는 블라인드 처리, 한국어 문제만 풀이
+    - 실버1 ~ 골드1 에서 랜덤, 난이도는 블라인드 처리, 한국어 문제만 풀이
 - Programmers CodingTest ([프로그래머스](https://school.programmers.co.\kr/learn/challenges?order=recent&languages=cpp&page=1))
   
 <br>
 
-문제 유형 ([주 출제 유형 solved.ac 링크](https://solved.ac/problems?levelStart=10&levelEnd=15&tags=graphs%2Cdata_structures%2Cbruteforcing%2Ctrees%2Cbfs%2Cgraph_traversal%2Csorting%2Csegtree%2Cdfs%2Cbacktracking&t=1755169345168))
+문제 유형 ( [주 출제 유형 solved.ac 링크](https://solved.ac/problems?levelStart=10&levelEnd=15&tags=graphs%2Cdata_structures%2Cbruteforcing%2Ctrees%2Cbfs%2Cgraph_traversal%2Csorting%2Csegtree%2Cdfs%2Cbacktracking&t=1755169345168(https://solved.ac/problemslevelStart=10&levelEnd=15&solvedByGte=250&t=1758354297011&sort=random&direction=asc&page=1)) )
 
-- 그래프 이론, 그래프 탐색, 트리, 세그먼트 트리, 깊이 우선 탐색, 너비 우선 탐색
-- 지료 구조, 브루트포스, 정렬, 백트래킹 등등...
+- 모든 유형 + 상관 없이 실버 1 ~ 골드 1
+- 대신 최소 해결 수 250 이상
 
 <br>
 
 ## 문제 풀이 방식
 
-- 1시간 ~ 2시간 투자.
-- 풀지 못하였을 경우 참고하여 풀 것,
-- 각 문제 별 [README.md](http://readme.md/) 추가 및 아래 템플릿 참고해서 기록
--> 추후 복습!
+- 최대 50분 투자!
+- 풀지 못하였을 경우 참고하여 풀 것, 많은 문제를 접할 것을 목표
+- 각 문제 별 [README.md](http://readme.md/) 추가 및 아래 템플릿 참고해서 기록 -> 추후 복습!
 
 <br>
 
