@@ -15,10 +15,10 @@
   
 <br>
 
-문제 유형 ( [주 출제 유형 solved.ac 링크](https://solved.ac/problems?levelStart=10&levelEnd=15&tags=graphs%2Cdata_structures%2Cbruteforcing%2Ctrees%2Cbfs%2Cgraph_traversal%2Csorting%2Csegtree%2Cdfs%2Cbacktracking&t=1755169345168(https://solved.ac/problemslevelStart=10&levelEnd=15&solvedByGte=250&t=1758354297011&sort=random&direction=asc&page=1)) )
+문제 유형 ( [주 출제 유형 solved.ac 링크](https://solved.ac/problems?levelStart=10&levelEnd=15&solvedByGte=250&t=1758354538588) )
 
-- 모든 유형 + 상관 없이 실버 1 ~ 골드 1
-- 대신 최소 해결 수 250 이상
+- 모든 유형 + 상관 없이 실버 1 ~ 골드 1, 대신 최소 해결 수 250 이상
+- 대신 랜덤으로 문제 풀이
 
 <br>
 
