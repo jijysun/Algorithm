@@ -4,6 +4,9 @@
 ![CLion](https://img.shields.io/badge/CLion-000000?style=for-the-badge&logo=clion&logoColor=white)
 
 2025/0718 부터 시작하는 1일 1알고리즘!
+- 10/13~10/25 시험 주간으로 잠시 스킵
+
+
 
 <br>
 
