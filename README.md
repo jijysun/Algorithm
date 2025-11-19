@@ -3,7 +3,7 @@
 ![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
 ![CLion](https://img.shields.io/badge/CLion-000000?style=for-the-badge&logo=clion&logoColor=white)
 
-2025/0718 부터 시작하는 1일 1알고리즘!
+1일 1알고리즘!
 - 10/13~10/25 시험 주간으로 잠시 스킵
 - 11월 ~ 12월 초 까지 총 30 문제 + a 도전
 - 학기 중 ICPC 문제 리뷰
