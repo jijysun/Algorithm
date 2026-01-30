@@ -1,4 +1,4 @@
-# 2631 줄세우기 (실패)
+# 2631 줄세우기 (복습)
 
 # 문제 소개
 
@@ -9,7 +9,6 @@
 | 1 초 | 128 MB | 16703 | 10790 | 9097 | 66.581% |
 
 ## 문제
-test
 
 KOI 어린이집에는 N명의 아이들이 있다. 오늘은 소풍을 가는 날이다. 선생님은 1번부터 N번까지 번호가 적혀있는 번호표를 아이들의 가슴에 붙여주었다. 선생님은 아이들을 효과적으로 보호하기 위해 목적지까지 번호순서대로 일렬로 서서 걸어가도록 하였다. 이동 도중에 보니 아이들의 번호순서가 바뀌었다. 그래서 선생님은 다시 번호 순서대로 줄을 세우기 위해서 아이들의 위치를 옮기려고 한다. 그리고 아이들이 혼란스러워하지 않도록 하기 위해 위치를 옮기는 아이들의 수를 최소로 하려고 한다.
 
@@ -141,6 +140,59 @@ int main() {
 
 ```
 
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+// https://www.acmicpc.net/problem/2631
+// 오후 05:45 2026-01-25
+
+int n, arr [201], dp [201];
+
+void input() {
+
+    cin >> n;
+
+    for (int i =0; i < n; i++) {
+        cin >> arr[i];
+    }
+}
+
+void solution() {
+
+    // 최장 증가 수열 문제 == dp 문제이다.
+
+    /*
+     * 최장 수열 애들은 고정 시키고, 나머지는 대충 교환하면 되는 문제이다.
+     * = 입력 받은 n - 고정된 애들
+     */
+
+    int max_switch = 0;
+
+    for (int i =0; i < n; i++) {
+        dp[i] = 1;
+        for (int j = 0; j<i; j++) {
+            if (arr[i] > arr[j] && dp[j]+1 > dp[i]) {
+                dp[i] = dp[j]+1;
+                max_switch = max(max_switch, dp[i]);
+            }
+        }
+    }
+
+    cout << n - max_switch << '\n';
+
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+
+    input(), solution();
+    return 0;
+}
+```
+
 ---
 
 # 결과 & 근거
@@ -152,6 +204,13 @@ int main() {
     - 시간을 너무 낭비하고, 코드로 소화시키는 것을 잘 못하는 것 같다.
 
 https://velog.io/@bookae/BOJ-2631.-%EC%A4%84-%EC%84%B8%EC%9A%B0%EA%B8%B0-Java
+
+오후 05:45 2026-01-25 복습
+
+- 최장 증가 수열 문제임을 빠르게 파악, 해당 코드를 빠르게 작성하여 풀긴 했다.
+- 완벽한 DP 문제라 아직은 쥐약인 듯 하다.
+
+---
 
 ### 알고리즘 분류
 
