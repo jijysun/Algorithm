@@ -27,12 +27,12 @@
     &quot;assignee&quot;: &quot;jijysun&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/jijysun/Algorithm.git&quot;,
-    &quot;accountId&quot;: &quot;4db40d8b-0c0b-40bd-83a8-763507c94823&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/jijysun/Algorithm.git",
+    "accountId": "6c98fbde-1bfa-48cb-a8c2-45c1c40cbaaa"
   }
-}</component>
+}]]></component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
     <option name="majorVersion" value="2024" />
@@ -97,6 +97,7 @@
       <workItem from="1766905467711" duration="60000" />
       <workItem from="1769328738293" duration="78000" />
       <workItem from="1770895101656" duration="84000" />
+      <workItem from="1771685282284" duration="55000" />
     </task>
     <servers />
   </component>
