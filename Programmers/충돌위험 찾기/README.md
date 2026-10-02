@@ -245,6 +245,45 @@ int main()
 - 정석 풀이는 각 로봇의 시간별 위치를 사전에 전부 계산한 뒤, 시간 단위로 충돌 여부를 체크하는 방식이다.
 - 시뮬레이션과 충돌 감지를 분리하면 코드가 훨씬 단순해진다.
 
+### 답지
+```cpp
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int solution(vector<vector<int>> points, vector<vector<int>> routes) {
+    int answer = 0;
+    int x = routes.size();
+
+    // Step 1: 로봇별 시간별 위치 사전 계산
+    vector<vector<pair<int,int>>> path(x);
+
+    for (int i = 0; i < x; i++) {
+        int r = points[routes[i][0]-1][0], c = points[routes[i][0]-1][1]; // 좌표 계산
+        path[i].push_back({r, c}); // t=0
+
+        for (int j = 1; j < (int)routes[i].size(); j++) {
+            int dr = points[routes[i][j]-1][0], dc = points[routes[i][j]-1][1];
+            while (r != dr) { r += (dr>r)?1:-1; path[i].push_back({r,c}); }
+            while (c != dc) { c += (dc>c)?1:-1; path[i].push_back({r,c}); }
+        }
+    }
+
+    // Step 2: 시간별 충돌 감지
+    int max_t = 0;
+    for (int i = 0; i < x; i++) max_t = max(max_t, (int)path[i].size());
+
+    for (int t = 0; t < max_t; t++) {
+        map<pair<int,int>, int> cnt; // 굳이 visited 배열 보다는 매번 map 선언이 깔끔.
+        for (int i = 0; i < x; i++)
+            if (t < (int)path[i].size()) cnt[path[i][t]]++;
+        for (auto& [p, c] : cnt) if (c >= 2) answer++;
+    }
+
+    return answer;
+}
+```
+
 ### 알고리즘 분류
 
 - 시뮬레이션, 구현
