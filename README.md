@@ -4,11 +4,6 @@
 ![CLion](https://img.shields.io/badge/CLion-000000?style=for-the-badge&logo=clion&logoColor=white)
 
 1일 1알고리즘!
-- 10/13~10/25 시험 주간으로 잠시 스킵
-- 11월 ~ 12월 초 까지 총 30 문제 + a 도전
-- 학기 중 ICPC 문제 리뷰
-
-
 
 <br>
 
@@ -17,25 +12,29 @@
 - [Boj.kr](http://boj.kr/) ([solved.ac](http://solved.ac/))
     - 실버1 ~ 골드1 에서 랜덤, 난이도는 블라인드 처리, 한국어 문제만 풀이
 - Programmers CodingTest ([프로그래머스](https://school.programmers.co.\kr/learn/challenges?order=recent&languages=cpp&page=1))
+  - 최대 난이도 Lv.4 까지의 여러 문제 온라인 풀이
   
 <br>
-
-문제 유형 ( [solved.ac 링크](https://solved.ac/problems?levelStart=10&levelEnd=15&solvedByGte=250&t=1758354538588) )
-
-- 모든 유형 + 상관 없이 실버 1 ~ 골드 1, 대신 최소 해결 수 250 이상
-- 대신 랜덤으로 문제 풀이 = 랜덤 디펜스!
 
 <br>
 
 ## 문제 풀이 방식
 
-- 최대 45분 투자!
+- 최대 40분 투자!
 - 풀지 못하였을 경우 참고하여 풀 것, 많은 문제를 접할 것을 목표 -> (대실패, 실패, 성공, 미완성, 복습 으로 풀이를 남길 것)
 - 각 문제 별 [README.md](http://readme.md/) 추가 및 아래 템플릿 참고해서 기록 -> 추후 복습!
 
 <br>
 
-## 템플릿
+#### 구상 템플릿
+- 제한사항 숫자 베끼기      (n≤100, k≤10 / r2≤10^6 / n,m≤500)
+- 내 접근의 연산량 = ?       → 1억/초 기준 통과 여부 O/X 
+- 상태와 전이를 한 문장으로   "상태 = 감염된 노드 집합, 전이 = 타입 t 선택"
+- 예시 1개를 손으로 돌리기   (내 로직이 정답을 뱉는지)
+
+_여러 알고리즘 유형 템플릿도 직접 코딩 해보기_
+
+## READEME.md 템플릿
 
 ### 1. 문제 소개
 문제 소개 복붙

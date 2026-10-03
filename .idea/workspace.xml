@@ -7,7 +7,9 @@
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="250b48a2-c930-42ce-b3f8-7f6f011469cd" name="Changes" comment="" />
+    <list default="true" id="250b48a2-c930-42ce-b3f8-7f6f011469cd" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -84,7 +86,9 @@
       <workItem from="1768230506193" duration="9000" />
       <workItem from="1768234605996" duration="272000" />
       <workItem from="1790943661544" duration="610000" />
-      <workItem from="1790953865793" duration="327000" />
+      <workItem from="1790953865793" duration="1081000" />
+      <workItem from="1791031120008" duration="14000" />
+      <workItem from="1791031149691" duration="14000" />
     </task>
     <servers />
   </component>
