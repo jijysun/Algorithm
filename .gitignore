@@ -90,6 +90,9 @@ fabric.properties
 !.idea/codeStyles
 !.idea/runConfigurations
 
+# 프로젝트 파일 템플릿 (New > Algorithm README) — 다른 PC에서도 쓰기 위해 추적한다
+!.idea/fileTemplates/
+
 ### Intellij+all ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
